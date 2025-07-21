@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Todo List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Quotes Section -->
+        <aside class="quotes-panel">
+            <div class="quote-container">
+                <i class="ph ph-quotes"></i>
+                <blockquote id="quote-text">Loading quote...</blockquote>
+                <cite id="quote-author">Author</cite>
+            </div>
+            <div class="quotes-footer">
+                <button id="new-quote" class="quote-btn">
+                    <i class="ph ph-shuffle"></i>
+                    New Quote
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="logo-section">
+                    <i class="ph ph-check-circle"></i>
+                    <h1>Tasks</h1>
+                </div>
+                <p class="subtitle">Organize your day efficiently</p>
+                <form id="todo-form" class="todo-form">
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <i class="ph ph-plus-circle"></i>
+                            <input type="text" id="todo-input" placeholder="Add a new task..." required>
+                        </div>
+                        <div class="select-wrapper">
+                            <i class="ph ph-flag"></i>
+                            <select id="priority-select">
+                                <option value="low">Low Priority</option>
+                                <option value="medium">Medium Priority</option>
+                                <option value="high">High Priority</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="add-btn">
+                            <i class="ph ph-plus-bold"></i>
+                            Add Task
+                        </button>
+                    </div>
+                </form>
+            </header>
+
+            <main>
+                <div class="tasks-container">
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">
+                            <i class="ph ph-list"></i>
+                            All
+                        </button>
+                        <button class="filter-btn" data-filter="active">
+                            <i class="ph ph-circle"></i>
+                            Active
+                        </button>
+                        <button class="filter-btn" data-filter="completed">
+                            <i class="ph ph-check-circle"></i>
+                            Completed
+                        </button>
+                    </div>
+
+                    <div class="todo-stats">
+                        <div class="stat-item">
+                            <i class="ph ph-notebook"></i>
+                            <span id="total-tasks">Total: 0</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="ph ph-check-square"></i>
+                            <span id="completed-tasks">Completed: 0</span>
+                        </div>
+                    </div>
+
+                    <div class="empty-state" id="empty-state">
+                        <i class="ph ph-clipboard-text"></i>
+                        <p>No tasks yet. Add your first task!</p>
+                    </div>
+
+                    <ul id="todo-list" class="todo-list">
+                        <!-- Todo items will be added here dynamically -->
+                    </ul>
+                </div>
+            </main>
+        </div>
+
+    </div>
+
+    <!-- Edit Modal is outside the main layout flow -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="ph ph-pencil"></i> Edit Task</h2>
+                <button class="close-modal" id="close-modal">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+            <form id="edit-form">
+                <div class="input-wrapper">
+                    <i class="ph ph-text-t"></i>
+                    <input type="text" id="edit-input" required>
+                </div>
+                <div class="select-wrapper">
+                    <i class="ph ph-flag"></i>
+                    <select id="edit-priority">
+                        <option value="low">Low Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="cancel-btn" id="cancel-edit">
+                        <i class="ph ph-x"></i>
+                        Cancel
+                    </button>
+                    <button type="submit" class="save-btn">
+                        <i class="ph ph-check"></i>
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
